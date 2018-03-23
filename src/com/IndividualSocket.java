@@ -5,14 +5,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class IndividualSocket {
+public class IndividualSocket implements Runnable {
+	
+	int number, socket_number;
+	String client_ip;
+	boolean assigned;
+	ServerSocket s1;
 
 	public IndividualSocket(String client_ip, int socket_number) {
-		int number, skt;
-		boolean assigned = false;
-		skt = 1;
-//		while loop for socket
-		ServerSocket s1;
+		this.client_ip = client_ip;
+		this.socket_number = socket_number;
+		
+	}
+
+
+	public void run() {
+		
 		do {
 			try {
 				s1 = new ServerSocket(socket_number);
